@@ -1,0 +1,1511 @@
+
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Book Interaktif: Penternakan Ayam Baka (Breeder)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .active-tab { background-color: #166534; color: #ffffff; border-left: 4px solid #f59e0b; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .gradient-header { background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="gradient-header text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3">
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-md text-white hover:bg-emerald-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                    <div class="bg-amber-500 text-slate-900 p-2 rounded-lg font-black text-xl shadow-inner">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold tracking-tight leading-none text-white">Manual Penternakan Ayam Baka</h1>
+                        <p class="text-xs text-emerald-200 mt-0.5 hidden sm:block">Panduan Interaktif Lengkap: DOC hingga Pre-Lay</p>
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <div class="hidden md:flex items-center text-xs bg-emerald-900/60 border border-emerald-700/50 rounded-full px-3 py-1.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse mr-2"></span>
+                        <span id="reading-progress-text">Progress: 0% Selesai</span>
+                    </div>
+                    <button onclick="scrollToSection('kalkulator-hub')" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold px-3 py-1.5 text-xs sm:text-sm rounded-lg shadow-sm transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span>Kalkulator</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar Indicator -->
+        <div class="w-full bg-emerald-950 h-1.5">
+            <div id="progress-bar" class="bg-amber-400 h-1.5 transition-all duration-300 w-0"></div>
+        </div>
+    </header>
+
+    <!-- Main Container Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 flex flex-col lg:flex-row gap-6 w-full">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 lg:static transition duration-300 ease-in-out z-40 w-72 bg-white lg:bg-transparent shadow-xl lg:shadow-none flex flex-col shrink-0">
+            <div class="p-4 bg-emerald-900 text-white flex justify-between items-center lg:hidden">
+                <span class="font-bold text-base"><i class="fa-solid fa-book-open mr-2"></i> Menu Bab E-Book</span>
+                <button id="close-sidebar" class="text-white hover:text-amber-400"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            
+            <div class="sticky top-20 bg-white border border-slate-200 rounded-2xl p-3 shadow-sm flex flex-col gap-1 max-h-[calc(100vh-6rem)] overflow-y-auto">
+                <div class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Modul E-Book</div>
+                
+                <button onclick="showTab('bab1')" id="nav-bab1" class="active-tab w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm transition flex items-center justify-between group">
+                    <span class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-warehouse text-amber-500 group-hover:scale-110 transition"></i>
+                        <span>Bab 1: Reban & Brooding</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
+                </button>
+
+                <button onclick="showTab('bab2')" id="nav-bab2" class="w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition flex items-center justify-between group">
+                    <span class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-egg text-emerald-600 group-hover:scale-110 transition"></i>
+                        <span>Bab 2: Pengurusan DOC</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
+                </button>
+
+                <button onclick="showTab('bab3')" id="nav-bab3" class="w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition flex items-center justify-between group">
+                    <span class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-wheat-awn text-emerald-600 group-hover:scale-110 transition"></i>
+                        <span>Bab 3: Pemakanan & Skip-Day</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
+                </button>
+
+                <button onclick="showTab('bab4')" id="nav-bab4" class="w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition flex items-center justify-between group">
+                    <span class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-syringe text-emerald-600 group-hover:scale-110 transition"></i>
+                        <span>Bab 4: Vaksin & Deworming</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
+                </button>
+
+                <button onclick="showTab('bab5')" id="nav-bab5" class="w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition flex items-center justify-between group">
+                    <span class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-chart-line text-emerald-600 group-hover:scale-110 transition"></i>
+                        <span>Bab 5: Uniformity & Pre-Lay</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
+                </button>
+
+                <div class="px-3 pt-3 pb-1 text-xs font-bold text-slate-400 uppercase tracking-wider">Peralatan & Tools</div>
+
+                <button onclick="showTab('kalkulator')" id="nav-kalkulator" class="w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition flex items-center justify-between group">
+                    <span class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-calculator text-amber-600 group-hover:scale-110 transition"></i>
+                        <span>Kalkulator Ternakan</span>
+                    </span>
+                    <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">4 Tool</span>
+                </button>
+
+                <button onclick="showTab('checklist')" id="nav-checklist" class="w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition flex items-center justify-between group">
+                    <span class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-list-check text-emerald-600 group-hover:scale-110 transition"></i>
+                        <span>Checklist Interaktif</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
+                </button>
+
+                <!-- Dynamic Quick Stats Card -->
+                <div class="mt-4 p-3 bg-slate-900 text-white rounded-xl text-xs space-y-2">
+                    <div class="font-semibold text-amber-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info"></i> Standard Breeder Close
+                    </div>
+                    <div class="text-slate-300 space-y-1">
+                        <div class="flex justify-between"><span>Keluasan:</span> <span>2 FT² / Ayam</span></div>
+                        <div class="flex justify-between"><span>Mortaliti Std:</span> <span>+4% Allowance</span></div>
+                        <div class="flex justify-between"><span>Jantan (Male):</span> <span>13% Daripada Betina</span></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Overlay for mobile menu -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/50 z-30 hidden lg:hidden"></div>
+
+        <!-- Content Area -->
+        <main class="flex-1 min-w-0">
+            
+            <!-- BAB 1: PERSEDIAAN REBAN & BROODING -->
+            <section id="content-bab1" class="tab-content space-y-6">
+                <!-- Chapter Banner -->
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-6 sm:p-8 rounded-2xl shadow-md relative overflow-hidden">
+                    <div class="relative z-10 space-y-2">
+                        <span class="bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">BAB 1</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold">Persediaan Reban, Brooding & Sanitasi</h2>
+                        <p class="text-emerald-100 text-sm max-w-2xl">
+                            Langkah demi langkah penyediaan reban daripada program pembersihan komprehensif, fumigasi saintifik, hingga pengiraan kapasiti dan penyediaan tempat brooding DOC.
+                        </p>
+                    </div>
+                    <i class="fa-solid fa-warehouse absolute -right-6 -bottom-8 text-9xl text-white/10 pointer-events-none"></i>
+                </div>
+
+                <!-- Section A: Program Pembersihan Reban -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b pb-3">
+                        <h3 class="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                            <i class="fa-solid fa-broom text-amber-500"></i>
+                            Program Pembersihan Reban (Selepas Ayam Habis)
+                        </h3>
+                        <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">23 Langkah Standard</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600">
+                        Prosedur di bawah wajib dipatuhi mengikut garis masa (hari) untuk memastikan kuman penyakit daripada pusingan terdahulu dimusnahkan sepenuhnya sebelum DOC baru tiba.
+                    </p>
+
+                    <!-- Interactive Step Table -->
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+                            <thead class="bg-slate-100 text-slate-800 uppercase font-bold text-xs">
+                                <tr>
+                                    <th class="py-3 px-3 w-12 text-center">Bil</th>
+                                    <th class="py-3 px-4">Perkara / Tindakan Pembersihan</th>
+                                    <th class="py-3 px-4">Bahan / Kimia Syor</th>
+                                    <th class="py-3 px-4 text-center w-28">Masa (Hari)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-medium">
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">1</td>
+                                    <td class="py-2.5 px-4">Jual ayam tua (Depopulation)</td>
+                                    <td class="py-2.5 px-4 text-slate-500">-</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">3 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">2</td>
+                                    <td class="py-2.5 px-4">Racun tikus sehingga reban mula dicuci</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Ubat racun perosak</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">Berterusan</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">3</td>
+                                    <td class="py-2.5 px-4">Sembur racun serangga</td>
+                                    <td class="py-2.5 px-4 font-semibold text-slate-800">Malathion 84E / Chemicide</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">1/2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">4</td>
+                                    <td class="py-2.5 px-4">Gantung peralatan reban</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Peralatan makan & minum</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">5</td>
+                                    <td class="py-2.5 px-4">Buka slat reban</td>
+                                    <td class="py-2.5 px-4 text-slate-500">-</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 bg-amber-50/50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">6</td>
+                                    <td class="py-2.5 px-4 font-semibold text-amber-900">Keluarkan tahi ayam dari reban</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Pembersihan fizikal & pelupusan</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">5 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">7</td>
+                                    <td class="py-2.5 px-4">Cuci & nyahkuman paip / talian air</td>
+                                    <td class="py-2.5 px-4 font-semibold text-slate-800">Sodium hydroxide 2% / CID 2000</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">1/2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">8</td>
+                                    <td class="py-2.5 px-4 font-semibold">Cuci reban dengan air tekanan tinggi</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Water jet & detergen</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">6 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">9</td>
+                                    <td class="py-2.5 px-4">Sembur racun serangga kali kedua</td>
+                                    <td class="py-2.5 px-4 font-semibold text-slate-800">Icon / Crackdown / Chemicide</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">1/2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">10</td>
+                                    <td class="py-2.5 px-4">Baiki struktur reban & kerosakan</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Kerja senggara & pertukangan</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">5 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">11</td>
+                                    <td class="py-2.5 px-4">Mengecat kapur (Lime washing)</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Kapur mati (Hydrated lime)</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">1 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">12</td>
+                                    <td class="py-2.5 px-4">Pasang semula slat</td>
+                                    <td class="py-2.5 px-4 text-slate-500">-</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">13</td>
+                                    <td class="py-2.5 px-4">Umpan racun tikus perimeter</td>
+                                    <td class="py-2.5 px-4 font-semibold text-slate-800">Talon / Racumin</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">-</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">14</td>
+                                    <td class="py-2.5 px-4">Pasang peralatan makan & minum</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Feeder / Drinker lines</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">4 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">15</td>
+                                    <td class="py-2.5 px-4">Sembur pembasmi kuman peringkat 1</td>
+                                    <td class="py-2.5 px-4 font-semibold text-slate-800">Farmsafe / Glutaraldehyde / Bioguard</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">1/2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">16</td>
+                                    <td class="py-2.5 px-4">Baiki & semak tabir (Curtain system)</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Kesesakan udarah & penebat</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">17</td>
+                                    <td class="py-2.5 px-4">Isi habuk kayu (Litter bedding)</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Habuk kayu kering & bersih</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">18</td>
+                                    <td class="py-2.5 px-4">Sembur pembasmi kuman peringkat 2</td>
+                                    <td class="py-2.5 px-4 font-semibold text-slate-800">Omnicide / Bioguard</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">1/2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">19</td>
+                                    <td class="py-2.5 px-4">Sembur Formalin (Sanitasi menyeluruh)</td>
+                                    <td class="py-2.5 px-4 font-semibold text-slate-800">Cecair Formalin</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">1/2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">20</td>
+                                    <td class="py-2.5 px-4 font-semibold text-red-700">Tutup reban rapat & kunci</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Kawalan Biosekuriti ketat</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">-</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">21</td>
+                                    <td class="py-2.5 px-4 font-bold text-emerald-900">Fogging reban (3 hari sebelum DOC tiba)</td>
+                                    <td class="py-2.5 px-4 font-semibold text-slate-800">Kemperneo K7</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">1/2 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-3 text-center font-bold text-slate-400">22</td>
+                                    <td class="py-2.5 px-4 font-semibold">Stand-by Reban & uji pemanas (Minimum)</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Panaskan reban & uji nipple</td>
+                                    <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">3 Hari</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-100 font-bold">
+                                    <td class="py-2.5 px-3 text-center text-emerald-800">23</td>
+                                    <td class="py-2.5 px-4 text-emerald-900">TERIMA DOC (DAY OLD CHICK)</td>
+                                    <td class="py-2.5 px-4 text-slate-600">Sedia air gula / Vitamin C</td>
+                                    <td class="py-2.5 px-4 text-center text-emerald-800">1 Hari</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section B: Pengiraan Fumigasi Formalin + Potassium Permanganate -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-flask text-emerald-600"></i>
+                            Formula Fumigasi (Potassium & Formalin)
+                        </h3>
+                        <p class="text-xs text-slate-600">
+                            Pengiraan nisbah pengasapan (fumigation) berasaskan isipadu bilik/reban (<span class="font-bold">Panjang x Tinggi x Lebar</span>).
+                        </p>
+
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs space-y-2">
+                            <div class="font-bold text-emerald-900 border-b pb-1">KADAR KEKUATAN STANDARD (PER 100 KAKI PADU):</div>
+                            <div class="flex justify-between items-center">
+                                <span><strong class="text-slate-800">Single Strength:</strong> 20g Potassium + 40ml Formalin</span>
+                                <span class="bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-[10px]">Telur</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span><strong class="text-slate-800">Double Strength:</strong> 40g Potassium + 80ml Formalin</span>
+                                <span class="bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-[10px]">Telur</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span><strong class="text-slate-800">Triple Strength:</strong> 60g Potassium + 120ml Formalin</span>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px] font-bold">Hatcher/Setter/Tray Kosong</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900">
+                            <strong>Contoh Pengiraan Berek/Bilik:</strong><br>
+                            245cm x 350cm x 240cm &rarr; (8.0 kaki x 11.5 kaki x 7.9 kaki = <strong>726.8 Kaki Padu</strong>)<br>
+                            <em>Triple Strength Required:</em><br>
+                            &bull; Potassium: (726.8 x 60)/100 = <strong>436.0 gram</strong><br>
+                            &bull; Formalin: (726.8 x 120)/100 = <strong>872.0 ml</strong>
+                        </div>
+                    </div>
+
+                    <!-- Section C: Pengiraan Kapasiti Reban Ayam Baka -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-[#000] fa-calculator text-amber-500"></i>
+                            Kapasiti & Densiti Reban Ayam Baka
+                        </h3>
+                        <p class="text-xs text-slate-600">
+                            Nisbah ruang minima bagi setiap jenis reban mengikut spesifikasi keselamatan ternakan:
+                        </p>
+
+                        <div class="space-y-2 text-xs">
+                            <div class="p-2.5 bg-slate-50 rounded-lg flex justify-between items-center border">
+                                <div>
+                                    <div class="font-bold text-slate-800">BREEDER CLOSE HOUSE</div>
+                                    <div class="text-slate-500">Reban Ayam Baka Tertutup</div>
+                                </div>
+                                <span class="text-sm font-extrabold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-lg">2.0 FT² / Ayam</span>
+                            </div>
+
+                            <div class="p-2.5 bg-slate-50 rounded-lg flex justify-between items-center border">
+                                <div>
+                                    <div class="font-bold text-slate-800">BROILER CLOSE HOUSE</div>
+                                    <div class="text-slate-500">Reban Pedaging Tertutup</div>
+                                </div>
+                                <span class="text-sm font-semibold text-slate-700 bg-slate-200 px-2.5 py-1 rounded-lg">0.8 FT² / Ayam</span>
+                            </div>
+
+                            <div class="p-2.5 bg-slate-50 rounded-lg flex justify-between items-center border">
+                                <div>
+                                    <div class="font-bold text-slate-800">BROILER OPEN HOUSE</div>
+                                    <div class="text-slate-500">Reban Terbuka</div>
+                                </div>
+                                <span class="text-sm font-semibold text-slate-700 bg-slate-200 px-2.5 py-1 rounded-lg">1.0 FT² / Ayam</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 space-y-1">
+                            <div class="font-bold"><i class="fa-solid fa-triangle-exclamation"></i> Elaun Mortaliti & Jantan (Male):</div>
+                            <div>&bull; <strong>Mortality & Sexing Error Allowance:</strong> +4%</div>
+                            <div>&bull; <strong>Male Ratio (Ayam Jantan):</strong> 13% daripada jumlah Betina</div>
+                            <div class="text-[11px] text-amber-800 pt-1">
+                                <em>Contoh: Reban 333' x 45' = 14,985 FT² &divide; 2 = 7,492 (7,500 ekor) + 4% = <strong>7,800 Ekor Betina</strong>. Male (13%) = <strong>1,014 Ekor Jantan</strong>.</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAB 2: PENGURUSAN DOC (MINGGU 1 - 4) -->
+            <section id="content-bab2" class="tab-content space-y-6 hidden">
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-6 sm:p-8 rounded-2xl shadow-md relative overflow-hidden">
+                    <div class="relative z-10 space-y-2">
+                        <span class="bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">BAB 2</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold">Pengurusan DOC (Hari 1 Hingga Minggu 4)</h2>
+                        <p class="text-emerald-100 text-sm max-w-2xl">
+                            Program pencahayaan, pemanas (heater), ketinggian nipple air minuman, penimbangan berat, dan jadual pembukaan plywood brooding.
+                        </p>
+                    </div>
+                    <i class="fa-solid fa-egg absolute -right-6 -bottom-8 text-9xl text-white/10 pointer-events-none"></i>
+                </div>
+
+                <!-- Section: Program Pencahayaan DOC (Lighting Schedule) -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b pb-3">
+                        <h3 class="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                            Jadual Program Pencahayaan DOC (Lighting Program)
+                        </h3>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Kritikal Bagi Selera Makan</span>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-slate-600">
+                        Pada minggu pertama, pencahayaan diterangkan untuk melatih DOC mencari makanan dan air minuman. Masa bergelap ditambah secara berperingkat untuk rehat dan stimulasi imuniti.
+                    </p>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+                            <thead class="bg-slate-100 text-slate-800 uppercase font-bold text-xs">
+                                <tr>
+                                    <th class="py-3 px-4">Umur Ayam</th>
+                                    <th class="py-3 px-4">Jenis / Mentol Lampu</th>
+                                    <th class="py-3 px-4 text-center">Tempoh Lampu Buka</th>
+                                    <th class="py-3 px-4 text-center">Waktu Beroperasi (Mula &rarr; Tutup)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50 font-semibold bg-emerald-50/50">
+                                    <td class="py-2.5 px-4 text-emerald-900">Hari 1</td>
+                                    <td class="py-2.5 px-4">10W atau 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center text-amber-600 font-bold">23 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 7.00 AM (Esok)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 2</td>
+                                    <td class="py-2.5 px-4">10W atau 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center text-amber-600 font-bold">23 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 7.00 AM (Esok)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 3</td>
+                                    <td class="py-2.5 px-4">10W / 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center font-bold">19 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 3.00 AM (Esok)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 4</td>
+                                    <td class="py-2.5 px-4">10W / 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center font-bold">16 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 12.00 AM (Tengah Malam)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 5</td>
+                                    <td class="py-2.5 px-4">10W / 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center font-bold">14 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 10.00 PM</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 6</td>
+                                    <td class="py-2.5 px-4">10W / 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center font-bold">12 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 8.00 PM</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 7</td>
+                                    <td class="py-2.5 px-4">10W / 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center font-bold">11 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 7.00 PM</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 8</td>
+                                    <td class="py-2.5 px-4">10W / 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center font-bold">10 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 6.00 PM</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 9</td>
+                                    <td class="py-2.5 px-4">10W / 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center font-bold">9 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 5.00 PM</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-2.5 px-4 font-medium">Hari 10</td>
+                                    <td class="py-2.5 px-4">10W / 13W Putih</td>
+                                    <td class="py-2.5 px-4 text-center font-bold">8 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 4.00 PM</td>
+                                </tr>
+                                <tr class="hover:bg-amber-50 font-bold text-amber-900">
+                                    <td class="py-2.5 px-4">Hari 11 &rarr; 161 Hari (23 W)</td>
+                                    <td class="py-2.5 px-4">5W Kuning</td>
+                                    <td class="py-2.5 px-4 text-center text-amber-700">8 Jam</td>
+                                    <td class="py-2.5 px-4 text-center">8.00 AM &rarr; 4.00 PM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section: Cards Pengurusan Brooding, Heater, Air & Feeder -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Heater & Temperature Control -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex items-center gap-2 text-rose-600 font-bold text-base border-b pb-2">
+                            <i class="fa-solid fa-temperature-high text-xl"></i>
+                            <span>Pengurusan Pemanas (Heater)</span>
+                        </div>
+                        <ul class="text-xs sm:text-sm space-y-2 text-slate-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                                <span><strong>Suhu &lt; 32°C:</strong> BUKA Pemanas (Sekiranya hujan BUKA. Jika tidak hujan, BUKA bermula pukul 7.00 PM malam).</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-xmark text-rose-500 mt-1"></i>
+                                <span><strong>Suhu &gt; 32°C:</strong> TUTUP Pemanas elak DOC mengalami stres haba (heat stress).</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-weight-scale text-amber-500 mt-1"></i>
+                                <span><strong>Waktu Timbang Berat Ayam:</strong> Lepas makan pada jam <strong>10.30 AM</strong> pagi.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Plywood Brooding & Nipple Air -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex items-center gap-2 text-emerald-800 font-bold text-base border-b pb-2">
+                            <i class="fa-solid fa-expand text-xl"></i>
+                            <span>Plywood Brooding & Nipple Air</span>
+                        </div>
+                        <ul class="text-xs sm:text-sm space-y-2 text-slate-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-droplet text-blue-500 mt-1"></i>
+                                <span><strong>Nipple Air Minuman:</strong> Pada Hari ke-3 atau ke-5, TURUNKAN paras nipple mengikut ketinggian mata/belakang ayam.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-border-all text-emerald-600 mt-1"></i>
+                                <span><strong>Plywood Brooding Betina (Female):</strong> Hari ke-10 MESTI buka habis.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-border-all text-amber-600 mt-1"></i>
+                                <span><strong>Plywood Brooding Jantan (Male):</strong> Hari ke-15 MESTI buka habis.</span>
+                            </li>
+                            <li class="p-2.5 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 font-medium">
+                                <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+                                <em>Plywood brooding mesti diperiksa setiap 3 hari sekali. Jika nampak ayam terlalu padat/sesak, MESTI dibuka sedikit demi sedikit.</em>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section: Peralatan Feeder & Transisi Makanan -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-gears text-emerald-600"></i>
+                        Transisi Peralatan Feeder & Pemilihan Ayam (Grading)
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
+                            <div class="text-xs font-bold text-amber-600 uppercase">HARI KE-26</div>
+                            <div class="text-base font-extrabold text-slate-900">PILIH AYAM 100%</div>
+                            <p class="text-slate-600 text-xs">Lakukan pengasingan saiz (grading/culling) 100% untuk menyusun uniformity reban.</p>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
+                            <div class="text-xs font-bold text-amber-600 uppercase">HARI KE-27</div>
+                            <div class="text-base font-extrabold text-slate-900">PASANG CHAIN FEEDER</div>
+                            <p class="text-slate-600 text-xs">Pemasangan dan persediaan talian pemakanan automatik (chain feeder system).</p>
+                        </div>
+
+                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 space-y-1">
+                            <div class="text-xs font-bold text-emerald-700 uppercase">MINGGU 5 (HARI KE-29)</div>
+                            <div class="text-base font-extrabold text-emerald-900">START JALAN CHAIN FEEDER</div>
+                            <p class="text-emerald-800 text-xs">Mula jalankan mesin chain feeder secara rasmi bagi menggantikan dulang/talam brooding.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAB 3: PROGRAM PEMAKANAN & NISBAH SKIP-DAY -->
+            <section id="content-bab3" class="tab-content space-y-6 hidden">
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-6 sm:p-8 rounded-2xl shadow-md relative overflow-hidden">
+                    <div class="relative z-10 space-y-2">
+                        <span class="bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">BAB 3</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold">Program Pemakanan & Kod Makanan (Feed Code)</h2>
+                        <p class="text-emerald-100 text-sm max-w-2xl">
+                            Spesifikasi nutrisi, kod pakan jenama CAB & Goldcoin, serta jadual pemakanan puasa (Skip-Day Program 4/3, 5/2, 6/1).
+                        </p>
+                    </div>
+                    <i class="fa-solid fa-wheat-awn absolute -right-6 -bottom-8 text-9xl text-white/10 pointer-events-none"></i>
+                </div>
+
+                <!-- Section: Kod Makanan & Spesifikasi Nutrisi -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b pb-3">
+                        <h3 class="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                            <i class="fa-solid fa-list-ol text-amber-500"></i>
+                            Panduan Lengkap Kod & Kandungan Nutrisi Makanan
+                        </h3>
+                        <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">CAB vs GoldCoin</span>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+                            <thead class="bg-slate-100 text-slate-800 uppercase font-bold text-xs">
+                                <tr>
+                                    <th class="py-3 px-4">Fasa Makanan</th>
+                                    <th class="py-3 px-3 text-center">Umur (Minggu)</th>
+                                    <th class="py-3 px-3 text-center">Kod CAB</th>
+                                    <th class="py-3 px-3 text-center">Kod Goldcoin</th>
+                                    <th class="py-3 px-4">Kandungan Nutrisi & Fokus Utama</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-3 px-4 font-bold text-slate-900">PRE-STARTER</td>
+                                    <td class="py-3 px-3 text-center font-medium">0 &gt; 2 W</td>
+                                    <td class="py-3 px-3 text-center font-bold text-emerald-700">3501</td>
+                                    <td class="py-3 px-3 text-center font-bold text-amber-700">200C</td>
+                                    <td class="py-3 px-4">
+                                        <div class="font-semibold text-slate-800">Protein: 21 - 23%</div>
+                                        <div class="text-xs text-slate-500">Perkembangan organ & sistem imun. Asid amino lengkap.</div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-3 px-4 font-bold text-slate-900">STARTER</td>
+                                    <td class="py-3 px-3 text-center font-medium">3 &gt; 7 W</td>
+                                    <td class="py-3 px-3 text-center font-bold text-emerald-700">3111</td>
+                                    <td class="py-3 px-3 text-center font-bold text-amber-700">100C</td>
+                                    <td class="py-3 px-4">
+                                        <div class="font-semibold text-slate-800">Protein: 19 - 21%</div>
+                                        <div class="text-xs text-slate-500">Pertumbuhan tulang & otot. Tenaga sederhana, kawal kalsium.</div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-3 px-4 font-bold text-slate-900">GROWING / DEVELOPER</td>
+                                    <td class="py-3 px-3 text-center font-medium">8 &gt; 17 W</td>
+                                    <td class="py-3 px-3 text-center font-bold text-emerald-700">3132</td>
+                                    <td class="py-3 px-3 text-center font-bold text-amber-700">108C</td>
+                                    <td class="py-3 px-4">
+                                        <div class="font-semibold text-slate-800">Protein: 16 - 18% (Grower) / 15-16% (Dev)</div>
+                                        <div class="text-xs text-slate-500">Kawal berat badan & capai uniformity. Elak ayam terlebih gemuk.</div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-amber-50">
+                                    <td class="py-3 px-4 font-bold text-amber-900">PRE-LAYING</td>
+                                    <td class="py-3 px-3 text-center font-medium">18 &gt; 25 W (5%)</td>
+                                    <td class="py-3 px-3 text-center font-bold text-emerald-700">3151</td>
+                                    <td class="py-3 px-3 text-center font-bold text-amber-700">109C</td>
+                                    <td class="py-3 px-4">
+                                        <div class="font-semibold text-amber-900">Protein: 16 - 17% | Kalsium: 2.0 - 2.5%</div>
+                                        <div class="text-xs text-amber-800">Persediaan sebelum bertelur. Tingkatkan kalsium bina rizab tulang.</div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-3 px-4 font-bold text-slate-900">LAYING / BREEDER 1</td>
+                                    <td class="py-3 px-3 text-center font-medium">5% &gt; 37 W</td>
+                                    <td class="py-3 px-3 text-center font-bold text-emerald-700">3162</td>
+                                    <td class="py-3 px-3 text-center font-bold text-amber-700">110P</td>
+                                    <td class="py-3 px-4">
+                                        <div class="font-semibold text-slate-800">Protein: 17 - 18% | Kalsium: 3.5 - 4.0%</div>
+                                        <div class="text-xs text-slate-500">Fasa puncak pengeluaran telur (Peak Production).</div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-3 px-4 font-bold text-slate-900">POSTBREEDER / BREEDER 2</td>
+                                    <td class="py-3 px-3 text-center font-medium">38 &gt; 56 W</td>
+                                    <td class="py-3 px-3 text-center font-bold text-emerald-700">3172</td>
+                                    <td class="py-3 px-3 text-center font-bold text-amber-700">111P</td>
+                                    <td class="py-3 px-4">
+                                        <div class="font-semibold text-slate-800">Protein Sederhana | Kalsium Kekal Tinggi</div>
+                                        <div class="text-xs text-slate-500">Kekalkan mutu kulit telur & kawal berat badan.</div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="py-3 px-4 font-bold text-slate-900">POSTBREEDER / BREEDER 3</td>
+                                    <td class="py-3 px-3 text-center font-medium">57 &gt; DEPOP</td>
+                                    <td class="py-3 px-3 text-center font-bold text-emerald-700">3192</td>
+                                    <td class="py-3 px-3 text-center font-bold text-amber-700">113P</td>
+                                    <td class="py-3 px-4">
+                                        <div class="font-semibold text-slate-800">Kawal Tenaga | Kalsium Tinggi</div>
+                                        <div class="text-xs text-slate-500">Mencegah masalah kulit telur nipis pada akhir kitaran.</div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-blue-50 font-bold text-blue-900">
+                                    <td class="py-3 px-4">MALE FEED (JANTAN)</td>
+                                    <td class="py-3 px-3 text-center">24 W &gt; DEPOP</td>
+                                    <td class="py-3 px-3 text-center text-emerald-700">3181</td>
+                                    <td class="py-3 px-3 text-center text-amber-700">112C</td>
+                                    <td class="py-3 px-4 text-xs font-normal">
+                                        * MALE FEED bermula minggu ke-24 (Selepas pemakanan ubat cacing / Dewormer Feed).
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section: Feed Program (Skip Day Schedule) -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b pb-3">
+                        <h3 class="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-days text-emerald-600"></i>
+                            Program Jadual Pemakanan Skip-Day (Hari Makan vs Puasa)
+                        </h3>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Prosedur Ayam Baka</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-center space-y-1">
+                            <span class="text-[10px] font-bold bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded-full uppercase">0 &rarr; 28 HARI</span>
+                            <div class="text-xl font-black text-emerald-900">DAILY</div>
+                            <div class="text-xs font-semibold text-emerald-800">Tiap-tiap Hari Makan</div>
+                        </div>
+
+                        <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-center space-y-1">
+                            <span class="text-[10px] font-bold bg-amber-200 text-amber-800 px-2 py-0.5 rounded-full uppercase">28 HARI &rarr; 15 MINGGU</span>
+                            <div class="text-xl font-black text-amber-900">4 / 3</div>
+                            <div class="text-xs font-semibold text-amber-800">4 Hari Makan / 3 Hari Puasa</div>
+                        </div>
+
+                        <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-center space-y-1">
+                            <span class="text-[10px] font-bold bg-amber-200 text-amber-800 px-2 py-0.5 rounded-full uppercase">16 MINGGU &rarr; 20 MINGGU</span>
+                            <div class="text-xl font-black text-amber-900">5 / 2</div>
+                            <div class="text-xs font-semibold text-amber-800">5 Hari Makan / 2 Hari Puasa</div>
+                        </div>
+
+                        <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-center space-y-1">
+                            <span class="text-[10px] font-bold bg-amber-200 text-amber-800 px-2 py-0.5 rounded-full uppercase">21 MINGGU &rarr; 22 MINGGU</span>
+                            <div class="text-xl font-black text-amber-900">6 / 1</div>
+                            <div class="text-xs font-semibold text-amber-800">6 Hari Makan / 1 Hari Puasa</div>
+                        </div>
+
+                        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-center space-y-1 sm:col-span-2 lg:col-span-1">
+                            <span class="text-[10px] font-bold bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded-full uppercase">23 MINGGU &rarr; HABIS</span>
+                            <div class="text-xl font-black text-emerald-900">DAILY</div>
+                            <div class="text-xs font-semibold text-emerald-800">Tiap-tiap Hari Makan</div>
+                        </div>
+                    </div>
+
+                    <div class="p-3.5 bg-slate-100 rounded-xl text-xs text-slate-700 space-y-1 border border-slate-200">
+                        <div class="font-bold text-slate-900"><i class="fa-solid fa-circle-info text-amber-500 mr-1"></i> Peraturan Penting Minggu Pertama (DOC):</div>
+                        <p>
+                            <em>Umur 1 hari sampai 1 minggu, makanan TIDAK PERLU mengikut timbangan. Berikan makanan secara ad-libitum (tanpa henti) supaya DOC dapat mencapai sasaran berat badan ideal pada minggu pertama!</em>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAB 4: VAKSINASI & DEWORMINC -->
+            <section id="content-bab4" class="tab-content space-y-6 hidden">
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-6 sm:p-8 rounded-2xl shadow-md relative overflow-hidden">
+                    <div class="relative z-10 space-y-2">
+                        <span class="bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">BAB 4</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold">Program Vaksinasi & Penjagaan Kesihatan</h2>
+                        <p class="text-emerald-100 text-sm max-w-2xl">
+                            Jadual lengkap imunisasi vaksinasi (Hari 9 hingga 483), program deworming menerusi makanan, dan kawalan biosekuriti air.
+                        </p>
+                    </div>
+                    <i class="fa-solid fa-syringe absolute -right-6 -bottom-8 text-9xl text-white/10 pointer-events-none"></i>
+                </div>
+
+                <!-- Section: Deworming Program (Via Feed) -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between border-b pb-2">
+                        <h3 class="font-bold text-emerald-900 text-base flex items-center gap-2">
+                            <i class="fa-solid fa-bug text-amber-500"></i>
+                            Program Ubat Cacing Menerusi Makanan (Deworming Program)
+                        </h3>
+                        <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2.5 py-0.5 rounded-full">Flubendazole 5%</span>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+                            <thead class="bg-slate-100 uppercase font-bold text-xs text-slate-800">
+                                <tr>
+                                    <th class="py-2.5 px-4">Umur (Minggu)</th>
+                                    <th class="py-2.5 px-4">Jenis Ubat Cacing</th>
+                                    <th class="py-2.5 px-4">Dos Standard</th>
+                                    <th class="py-2.5 px-4 text-center">Tempoh Rawatan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-medium">
+                                <tr><td class="py-2 px-4 font-bold">Minggu 8</td><td class="py-2 px-4">Flubendazole 5%</td><td class="py-2 px-4 text-emerald-700 font-bold">600g / MT Feed</td><td class="py-2 px-4 text-center">5 - 7 Hari</td></tr>
+                                <tr><td class="py-2 px-4 font-bold">Minggu 16</td><td class="py-2 px-4">Flubendazole 5%</td><td class="py-2 px-4 text-emerald-700 font-bold">600g / MT Feed</td><td class="py-2 px-4 text-center">5 - 7 Hari</td></tr>
+                                <tr><td class="py-2 px-4 font-bold">Minggu 24</td><td class="py-2 px-4">Flubendazole 5%</td><td class="py-2 px-4 text-emerald-700 font-bold">600g / MT Feed</td><td class="py-2 px-4 text-center">5 - 7 Hari</td></tr>
+                                <tr><td class="py-2 px-4 font-bold">Minggu 36</td><td class="py-2 px-4">Flubendazole 5%</td><td class="py-2 px-4 text-emerald-700 font-bold">600g / MT Feed</td><td class="py-2 px-4 text-center">5 - 7 Hari</td></tr>
+                                <tr><td class="py-2 px-4 font-bold">Minggu 44</td><td class="py-2 px-4">Flubendazole 5%</td><td class="py-2 px-4 text-emerald-700 font-bold">600g / MT Feed</td><td class="py-2 px-4 text-center">5 - 7 Hari</td></tr>
+                                <tr><td class="py-2 px-4 font-bold">Minggu 52</td><td class="py-2 px-4">Flubendazole 5%</td><td class="py-2 px-4 text-emerald-700 font-bold">600g / MT Feed</td><td class="py-2 px-4 text-center">5 - 7 Hari</td></tr>
+                                <tr><td class="py-2 px-4 font-bold">Minggu 60</td><td class="py-2 px-4">Flubendazole 5%</td><td class="py-2 px-4 text-emerald-700 font-bold">600g / MT Feed</td><td class="py-2 px-4 text-center">5 - 7 Hari</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section: Jadual Vaksinasi Lengkap (Teratur & Interactive Search) -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-amber-500"></i>
+                                Jadual Program Vaksinasi Ayam Baka Lengkap
+                            </h3>
+                            <p class="text-xs text-slate-500">Senarai vaksin mengikut susunan umur (Hari 9 &rarr; Hari 483)</p>
+                        </div>
+                        
+                        <!-- Search Box -->
+                        <div class="relative w-full sm:w-64">
+                            <input type="text" id="vac-search" onkeyup="filterVaccineTable()" placeholder="Cari vaksin / penyakit..." class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-slate-400 text-xs"></i>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 max-h-[500px] overflow-y-auto">
+                        <table id="vac-table" class="w-full text-xs text-left text-slate-700">
+                            <thead class="bg-slate-100 uppercase font-bold text-[11px] text-slate-800 sticky top-0 z-10 shadow-sm">
+                                <tr>
+                                    <th class="py-2.5 px-3">Hari</th>
+                                    <th class="py-2.5 px-3">Minggu</th>
+                                    <th class="py-2.5 px-4">Jenis Vaksin</th>
+                                    <th class="py-2.5 px-4">Jenama Syor</th>
+                                    <th class="py-2.5 px-3">Kaedah Pemberian (Route)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-medium" id="vac-tbody">
+                                <!-- Dynamic items loaded via JS for clean render -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAB 5: UNIFORMITY & PRE-LAY -->
+            <section id="content-bab5" class="tab-content space-y-6 hidden">
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-6 sm:p-8 rounded-2xl shadow-md relative overflow-hidden">
+                    <div class="relative z-10 space-y-2">
+                        <span class="bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">BAB 5</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold">Uniformity & Fasa Pre-Lay</h2>
+                        <p class="text-emerald-100 text-sm max-w-2xl">
+                            Pengukuran keseragaman (uniformity), kawalan berat badan, dan tanda-tanda fizikal ayam sedia memasuki fasa bertelur.
+                        </p>
+                    </div>
+                    <i class="fa-solid fa-chart-line absolute -right-6 -bottom-8 text-9xl text-white/10 pointer-events-none"></i>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Formulasi & Konsep Uniformity -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-2">
+                            <i class="fa-solid fa-bullseye text-emerald-600"></i>
+                            Pengukuran Keseragaman (Uniformity)
+                        </h3>
+                        <p class="text-xs text-slate-600">
+                            Uniformity dikira berdasarkan peratusan sampel ayam yang mempunyai berat badan dalam julat <strong>&plusmn;10% daripada purata berat kumpulan</strong>.
+                        </p>
+
+                        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 space-y-1">
+                            <div class="font-bold">Sasaran Piawaian (Target Benchmark):</div>
+                            <div>&bull; <strong>&gt; 85% Uniformity:</strong> Sangat Cemerlang (Cemerlang)</div>
+                            <div>&bull; <strong>80% - 84% Uniformity:</strong> Sederhana (Perlu Pengasingan)</div>
+                            <div>&bull; <strong>&lt; 80% Uniformity:</strong> Lemah (Perlu Makanan Khas)</div>
+                        </div>
+
+                        <div class="text-xs text-slate-600 space-y-1">
+                            <div class="font-bold text-slate-800">Langkah Pengasingan (Grading):</div>
+                            <div>1. Timbang sampel 10% daripada jumlah populasi.</div>
+                            <div>2. Bahagikan ayam kepada 3 kumpulan: Light (Kecil), Medium (Piawai), Heavy (Gemuk).</div>
+                            <div>3. Berikan insentif makanan untuk kumpulan Light bagi mengejar berat standard.</div>
+                        </div>
+                    </div>
+
+                    <!-- Persediaan Pre-Lay & Tanda Ayam Hampir Bertelur -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-2">
+                            <i class="fa-solid fa-egg text-amber-500"></i>
+                            Tanda-Tanda Ayam Hampir Bertelur (Pre-Lay)
+                        </h3>
+
+                        <ul class="text-xs sm:text-sm space-y-2 text-slate-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Balung & Gelambir Merah Segar:</strong> Balung tumbuh melebar, licin dan berdarah merah terang akibat perkembangan hormon estrogen.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Jarak Tulang Pelvis Melebar:</strong> Tulang pin (pubic bones) mekar meluas sehingga boleh memuatkan 2 hingga 3 jari.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Anus/Vent Lembap & Melebar:</strong> Anus menjadi lebih elastik, basah dan bujan oval.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Tingkah Laku Mencari Sarang:</strong> Ayam mula menunjukkan kelakuan bersarang (nesting behavior) dan lebih tenang.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB KALKULATOR HUB -->
+            <section id="content-kalkulator" class="tab-content space-y-6 hidden">
+                <div id="kalkulator-hub" class="bg-gradient-to-r from-amber-600 to-amber-700 text-white p-6 sm:p-8 rounded-2xl shadow-md">
+                    <span class="bg-white text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">TOOLKIT INTERAKTIF</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-2">Kalkulator Penternakan Ayam Baka</h2>
+                    <p class="text-amber-100 text-sm max-w-2xl mt-1">
+                        Sistem pengiraan automatik bagi makanan program puasa/skip-day, anggaran air minuman harian, kapasiti reban, dan fumigasi kimia.
+                    </p>
+                </div>
+
+                <!-- 1. Kalkulator Makanan Ayam (Formula Khas Skip-Day) -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-amber-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b pb-3">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-wheat-awn text-amber-500"></i>
+                            1. Kalkulator Pengiraan Makanan Ayam (Program Puasa / Skip-Day)
+                        </h3>
+                        <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Auto-Formula Khas</span>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl text-xs text-slate-600 border border-slate-200">
+                        <strong>Formula Pengiraan:</strong><br>
+                        <code>Total Makanan Seminggu = Jumlah Ayam &times; Feed Gram/Ekor &times; 7 Hari</code><br>
+                        <code>Makanan Diberi Pada Hari Makan = Total Makanan Seminggu &divide; Jumlah Hari Makan Dalam Seminggu</code>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Jumlah Ayam (Ekor)</label>
+                            <input type="number" id="feed-bird-count" value="7800" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Feed Gram per Ekor (Gram)</label>
+                            <input type="number" id="feed-gram-per-bird" value="65" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Program Pemakanan (Hari Makan / Puasa)</label>
+                            <select id="feed-program-select" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                <option value="7">7/0 - Setiap Hari Makan (7 Hari)</option>
+                                <option value="6">6/1 - 6 Hari Makan / 1 Hari Puasa</option>
+                                <option value="5">5/2 - 5 Hari Makan / 2 Hari Puasa</option>
+                                <option value="4" selected>4/3 - 4 Hari Makan / 3 Hari Puasa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateFeed()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-2.5 rounded-xl shadow transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span>Kira Jumlah Makanan</span>
+                    </button>
+
+                    <!-- Feed Results Display -->
+                    <div id="feed-result" class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl space-y-1">
+                            <span class="text-xs font-bold text-emerald-800 uppercase">JUMLAH MAKANAN SEMINGGU</span>
+                            <div class="text-2xl font-black text-emerald-900" id="feed-res-weekly">3,549.00 KG</div>
+                            <div class="text-xs text-emerald-700 font-semibold" id="feed-res-weekly-bags">70.98 Beg (50kg)</div>
+                        </div>
+
+                        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-1">
+                            <span class="text-xs font-bold text-amber-800 uppercase">PER HARI MAKAN (DAILY ON FEED)</span>
+                            <div class="text-2xl font-black text-amber-900" id="feed-res-perday">887.25 KG</div>
+                            <div class="text-xs text-amber-700 font-semibold" id="feed-res-perday-bags">17.75 Beg (50kg)</div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                            <span class="text-xs font-bold text-slate-600 uppercase">GRAM / EKOR (PADA HARI MAKAN)</span>
+                            <div class="text-2xl font-black text-slate-900" id="feed-res-gramperday">113.75 Gram</div>
+                            <div class="text-xs text-slate-500" id="feed-res-summary-note">Nisbah 4 Hari Makan / 3 Puasa</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Kalkulator Anggaran Water Consumption -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-blue-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b pb-3">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-droplet text-blue-500"></i>
+                            2. Kalkulator Anggaran Penggunaan Air Minuman Sehari (Liter & Gallon)
+                        </h3>
+                        <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full">Unit L & Gallon</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Jumlah Ayam (Ekor)</label>
+                            <input type="number" id="water-bird-count" value="7800" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Makanan Diberi Sehari (KG)</label>
+                            <input type="number" id="water-feed-kg" value="887.25" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Faktor Suhu / Cuaca</label>
+                            <select id="water-temp-ratio" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                <option value="2.0" selected>Normal (&lt; 28°C) - Nisbah 2.0x Makanan</option>
+                                <option value="2.5">Panas (28°C - 32°C) - Nisbah 2.5x Makanan</option>
+                                <option value="3.0">Sangat Panas (&gt; 32°C) - Nisbah 3.0x Makanan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateWater()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl shadow transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span>Kira Anggaran Penggunaan Air</span>
+                    </button>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-1 text-center">
+                            <span class="text-xs font-bold text-blue-800 uppercase">ANGGARAN AIR (UNIT LITER)</span>
+                            <div class="text-3xl font-black text-blue-900" id="water-res-liter">1,774.50 LITER</div>
+                            <div class="text-xs text-blue-700 font-medium">Penggunaan Seharian</div>
+                        </div>
+
+                        <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl space-y-1 text-center">
+                            <span class="text-xs font-bold text-emerald-800 uppercase">ANGGARAN AIR (UNIT US GALLON)</span>
+                            <div class="text-3xl font-black text-emerald-900" id="water-res-gallon">468.77 GALLON</div>
+                            <div class="text-xs text-emerald-700 font-medium">(1 US Gallon = 3.78541 Liter)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Kalkulator Kapasiti Reban -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b pb-3">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-house-chimney text-emerald-600"></i>
+                            3. Kalkulator Kapasiti Reban Ayam Baka
+                        </h3>
+                        <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">Keluasan FT²</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Panjang Reban (FT)</label>
+                            <input type="number" id="cap-length" value="333" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Lebar Reban (FT)</label>
+                            <input type="number" id="cap-width" value="45" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Jenis Reban</label>
+                            <select id="cap-type" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                                <option value="2.0" selected>Breeder Close House (2.0 ft²/ayam)</option>
+                                <option value="0.8">Broiler Close House (0.8 ft²/ayam)</option>
+                                <option value="1.0">Broiler Open House (1.0 ft²/ayam)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateCapacity()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span>Kira Kapasiti Ayam</span>
+                    </button>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-3 bg-slate-50 border rounded-xl">
+                            <div class="text-xs text-slate-500 font-bold uppercase">Keluasan Reban</div>
+                            <div class="text-xl font-bold text-slate-900" id="cap-res-area">14,985 FT²</div>
+                        </div>
+                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
+                            <div class="text-xs text-emerald-800 font-bold uppercase">Kapasiti Betina (+4% Mort)</div>
+                            <div class="text-xl font-extrabold text-emerald-900" id="cap-res-female">7,800 Ekor</div>
+                        </div>
+                        <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl">
+                            <div class="text-xs text-amber-800 font-bold uppercase">Kapasiti Jantan (13% Male)</div>
+                            <div class="text-xl font-extrabold text-amber-900" id="cap-res-male">1,014 Ekor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Kalkulator Fumigasi -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b pb-3">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-vial text-purple-600"></i>
+                            4. Kalkulator Fumigasi (Potassium & Formalin)
+                        </h3>
+                        <span class="text-xs font-bold bg-purple-100 text-purple-800 px-2.5 py-1 rounded-full">Per 100 FT³</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Panjang (FT)</label>
+                            <input type="number" id="fum-l" value="8.0" step="0.1" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Lebar (FT)</label>
+                            <input type="number" id="fum-w" value="11.5" step="0.1" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Tinggi (FT)</label>
+                            <input type="number" id="fum-h" value="7.9" step="0.1" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Kekuatan (Strength)</label>
+                            <select id="fum-strength" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl">
+                                <option value="1">Single Strength (20g / 40ml)</option>
+                                <option value="2">Double Strength (40g / 80ml)</option>
+                                <option value="3" selected>Triple Strength (60g / 120ml)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateFumigation()" class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span>Kira Pengasapan Fumigasi</span>
+                    </button>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-3 bg-slate-50 border rounded-xl">
+                            <div class="text-xs text-slate-500 font-bold uppercase">Isipadu Bilik</div>
+                            <div class="text-xl font-bold text-slate-900" id="fum-res-vol">726.8 Kaki Padu</div>
+                        </div>
+                        <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl">
+                            <div class="text-xs text-purple-800 font-bold uppercase">Potassium Permanganate</div>
+                            <div class="text-xl font-extrabold text-purple-900" id="fum-res-potassium">436.08 Gram</div>
+                        </div>
+                        <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl">
+                            <div class="text-xs text-purple-800 font-bold uppercase">Formalin Cecair</div>
+                            <div class="text-xl font-extrabold text-purple-900" id="fum-res-formalin">872.16 ML</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB CHECKLIST INTERAKTIF -->
+            <section id="content-checklist" class="tab-content space-y-6 hidden">
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-6 sm:p-8 rounded-2xl shadow-md">
+                    <span class="bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">TUGASAN HARIAN</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-2">Checklist Pengurusan Penternak</h2>
+                    <p class="text-emerald-100 text-sm max-w-2xl mt-1">
+                        Centang senarai semak berikut semasa menjalankan pengurusan di reban. Status akan disimpan secara automatik.
+                    </p>
+                </div>
+
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center border-b pb-3">
+                        <h3 class="font-bold text-slate-800 text-base">Senarai Semak Penting Bagi Setiap Peringkat Umur</h3>
+                        <button onclick="resetChecklist()" class="text-xs text-rose-600 hover:text-rose-800 font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-rotate-left"></i> Reset Checklist
+                        </button>
+                    </div>
+
+                    <div class="space-y-3" id="checklist-container">
+                        <!-- Items rendered dynamically with state memory -->
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-semibold text-slate-300">&copy; Manual & E-Book Interaktif Penternakan Ayam Baka (Breeder) - Sesuai Untuk Mobile & Desktop</p>
+            <p class="text-slate-500">Dihasilkan dengan HTML, Vanilla JavaScript & Tailwind CSS. Maklumat lengkap berpandukan piawaian sains penternakan reban tertutup.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Master Data for Vaccine Schedule
+        const vaccineData = [
+            { day: 9, week: "1.2", vac: "Reo (L)", brand: "VA ChickVac @ Zeotis", route: "Subcutaneous" },
+            { day: 9, week: "1.2", vac: "AMPV (L) SHS", brand: "Hipraviar SHS @ Hipra", route: "Eye Drop" },
+            { day: 13, week: "1.6", vac: "ND+IB (K)", brand: "Nobilis ND+IB Killed @ MSD", route: "Subcutaneous" },
+            { day: 18, week: "2.4", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Eye Drop" },
+            { day: 18, week: "2.4", vac: "IB Variant (L)", brand: "IB VAR 4/91 @ MSD", route: "Eye Drop" },
+            { day: 18, week: "2.4", vac: "Pox (L)", brand: "Fowl Pox @ MVP", route: "Wing Web" },
+            { day: 19, week: "2.5", vac: "Flushing: Tilmicosin + Apramycin sulfate", brand: "Flushing Rawatan Air", route: "Drinking Water" },
+            { day: 28, week: "4.0", vac: "MG (L)", brand: "MG- F-vax MG @ MSD", route: "Eye Drop" },
+            { day: 35, week: "5.0", vac: "E.Coli (L)", brand: "Poulvac E. Coli @ Zeotis", route: "Drinking Water" },
+            { day: 42, week: "6.0", vac: "IBH-8b Auto (K)", brand: "IBH-8b @ Anicon/BI", route: "Subcutaneous" },
+            { day: 42, week: "6.0", vac: "NDS (L)", brand: "MyVAC NDS @ MVP (0.5ml)", route: "Intramuscular" },
+            { day: 49, week: "7.0", vac: "Reo (L)", brand: "Reo- V.A Chick @ Zeotis", route: "Subcutaneous" },
+            { day: 56, week: "8.0", vac: "ILT (L)", brand: "LT IVAX / SP @ MSD", route: "Eye Drop" },
+            { day: 63, week: "9.0", vac: "LPAI H9N2 Auto (K)", brand: "ANIVAC H9N2 @ Taseen (0.5ml)", route: "Intramuscular" },
+            { day: 70, week: "10.0", vac: "ND+IB (K)", brand: "Vaksimune ND L-IBplus @ Vaksin", route: "Intramuscular" },
+            { day: 77, week: "11.0", vac: "Reovirus (K)", brand: "TRI Reo / Zeotis", route: "Intramuscular" },
+            { day: 84, week: "12.0", vac: "AMPV (L) SHS", brand: "AMPV (L) Hipraviar SHS", route: "Eye Drop" },
+            { day: 91, week: "13.0", vac: "AE + POX (L)", brand: "Nobilis AE+POX", route: "Wing Web" },
+            { day: 91, week: "13.0", vac: "CIAV (L)", brand: "Nobilis CAV P4", route: "Wing Web" },
+            { day: 105, week: "15.0", vac: "AMPV (K) SHS", brand: "TRT / Hipra", route: "Intramuscular" },
+            { day: 112, week: "16.0", vac: "ND+IB+EDS+Coryza (K)", brand: "ND+IB+EDS+Coryza (4 in 1 - BI)", route: "Intramuscular" },
+            { day: 119, week: "17.0", vac: "E.Coli (L)", brand: "Poulvac E. Coli @ Zeotis", route: "Drinking Water" },
+            { day: 126, week: "18.0", vac: "IBH-8b Auto (K)", brand: "IBH-8b @ Anicon/BI", route: "Intramuscular" },
+            { day: 126, week: "18.0", vac: "NDS (L)", brand: "MyVAC NDS @ MVP (0.5ml)", route: "Intramuscular" },
+            { day: 133, week: "19.0", vac: "MG (K)", brand: "MG - MG-Bac (Killed) @ Elanco", route: "Intramuscular" },
+            { day: 140, week: "20.0", vac: "LPAI H9N2 Auto (K)", brand: "ANIVAC H9N2 @ Taseen (0.5ml)", route: "Intramuscular" },
+            { day: 147, week: "21.0", vac: "ND+IB+IBD+Reo (K)", brand: "Nobilis ND+IB+IBD+Reo @ MSD", route: "Intramuscular" },
+            { day: 147, week: "21.0", vac: "Coryza (K)", brand: "CORYZA OIL", route: "Intramuscular" },
+            { day: 175, week: "25.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
+            { day: 203, week: "29.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 231, week: "33.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
+            { day: 259, week: "37.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 287, week: "41.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
+            { day: 315, week: "45.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 343, week: "49.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
+            { day: 371, week: "53.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 399, week: "57.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
+            { day: 427, week: "61.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 455, week: "65.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
+            { day: 483, week: "69.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" }
+        ];
+
+        // Master Data for Interactive Checklist
+        const defaultChecklist = [
+            { id: 1, text: "Uji fungsi heater & tetapan suhu brooding (<32°C)", cat: "Brooding" },
+            { id: 2, text: "Gantung & turunkan nipple air minuman (Hari 3 - 5)", cat: "Brooding" },
+            { id: 3, text: "Buka plywood brooding betina (Hari 10) & jantan (Hari 15)", cat: "Brooding" },
+            { id: 4, text: "Timbang berat sampel ayam jam 10.30 AM", cat: "Harian" },
+            { id: 5, text: "100% Pilih/Grading saiz ayam pada Hari ke-26", cat: "Minggu 4" },
+            { id: 6, text: "Pasang chain feeder (Hari 27) & mula operasi (Hari 29 / W5)", cat: "Minggu 4-5" },
+            { id: 7, text: "Sedia & larutkan ubat cacing Flubendazole 5% mengikut jadual", cat: "Kesihatan" },
+            { id: 8, text: "Semak tabir & kelajuan kipas pengudaraan reban", cat: "Harian" }
+        ];
+
+        let userChecklist = JSON.parse(localStorage.getItem('breeder_checklist')) || defaultChecklist.map(item => ({ ...item, done: false }));
+
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Remove active style from all nav buttons
+            document.querySelectorAll('#sidebar button').forEach(btn => {
+                btn.classList.remove('active-tab');
+                btn.classList.add('text-slate-600');
+            });
+
+            // Show target content
+            const targetContent = document.getElementById('content-' + tabId);
+            if (targetContent) targetContent.classList.remove('hidden');
+
+            // Highlight nav button
+            const activeNav = document.getElementById('nav-' + tabId);
+            if (activeNav) {
+                activeNav.classList.add('active-tab');
+                activeNav.classList.remove('text-slate-600');
+            }
+
+            // Close mobile menu if open
+            closeMobileMenu();
+
+            // Update Progress Percentage UI
+            updateProgress(tabId);
+
+            // Scroll top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToSection(sectionId) {
+            showTab('kalkulator');
+            setTimeout(() => {
+                const el = document.getElementById(sectionId);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function updateProgress(tabId) {
+            const tabs = ['bab1', 'bab2', 'bab3', 'bab4', 'bab5', 'kalkulator', 'checklist'];
+            const idx = tabs.indexOf(tabId) + 1;
+            const pct = Math.round((idx / tabs.length) * 100);
+            
+            document.getElementById('progress-bar').style.width = pct + '%';
+            document.getElementById('reading-progress-text').innerText = `Progress: ${pct}% Selesai`;
+        }
+
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const closeSidebarBtn = document.getElementById('close-sidebar');
+
+        function openMobileMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        }
+
+        function closeMobileMenu() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        }
+
+        if (mobileBtn) mobileBtn.addEventListener('click', openMobileMenu);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeMobileMenu);
+        if (overlay) overlay.addEventListener('click', closeMobileMenu);
+
+        function renderVaccineTable(data) {
+            const tbody = document.getElementById('vac-tbody');
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
+                tr.innerHTML = `
+                    <td class="py-2.5 px-3 font-bold text-slate-900">Hari ${item.day}</td>
+                    <td class="py-2.5 px-3 text-emerald-800 font-semibold">${item.week} W</td>
+                    <td class="py-2.5 px-4 font-bold text-slate-800">${item.vac}</td>
+                    <td class="py-2.5 px-4 text-slate-600">${item.brand}</td>
+                    <td class="py-2.5 px-3">
+                        <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px] border border-slate-200">
+                            ${item.route}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterVaccineTable() {
+            const query = document.getElementById('vac-search').value.toLowerCase();
+            const filtered = vaccineData.filter(i => 
+                i.vac.toLowerCase().includes(query) || 
+                i.brand.toLowerCase().includes(query) || 
+                i.route.toLowerCase().includes(query) ||
+                i.day.toString().includes(query) ||
+                i.week.includes(query)
+            );
+            renderVaccineTable(filtered);
+        }
+
+        function calculateFeed() {
+            const birdCount = parseFloat(document.getElementById('feed-bird-count').value) || 0;
+            const gramPerBird = parseFloat(document.getElementById('feed-gram-per-bird').value) || 0;
+            const daysOnFeed = parseFloat(document.getElementById('feed-program-select').value) || 7;
+
+            if (birdCount <= 0 || gramPerBird <= 0) {
+                alert("Sila masukkan jumlah ayam dan feed gram yang sah!");
+                return;
+            }
+
+            // Formula: (Jumlah Ayam * Gram per ekor * 7 hari) / Jumlah Hari Makan
+            const weeklyTotalGram = birdCount * gramPerBird * 7;
+            const weeklyTotalKg = weeklyTotalGram / 1000;
+            const weeklyTotalBags = weeklyTotalKg / 50;
+
+            const feedPerFeedingDayKg = weeklyTotalKg / daysOnFeed;
+            const feedPerFeedingDayBags = feedPerFeedingDayKg / 50;
+
+            const gramPerBirdOnFeedingDay = (gramPerBird * 7) / daysOnFeed;
+
+            // UI Display
+            document.getElementById('feed-res-weekly').innerText = weeklyTotalKg.toLocaleString('ms-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' KG';
+            document.getElementById('feed-res-weekly-bags').innerText = weeklyTotalBags.toFixed(2) + ' Beg (50kg)';
+
+            document.getElementById('feed-res-perday').innerText = feedPerFeedingDayKg.toLocaleString('ms-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' KG';
+            document.getElementById('feed-res-perday-bags').innerText = feedPerFeedingDayBags.toFixed(2) + ' Beg (50kg)';
+
+            document.getElementById('feed-res-gramperday').innerText = gramPerBirdOnFeedingDay.toFixed(2) + ' Gram';
+
+            const programText = {
+                7: "Setiap Hari Makan (7/0)",
+                6: "6 Hari Makan / 1 Hari Puasa (6/1)",
+                5: "5 Hari Makan / 2 Hari Puasa (5/2)",
+                4: "4 Hari Makan / 3 Hari Puasa (4/3)"
+            }[daysOnFeed];
+
+            document.getElementById('feed-res-summary-note').innerText = `Program ${programText}`;
+        }
+
+        function calculateWater() {
+            const feedKg = parseFloat(document.getElementById('water-feed-kg').value) || 0;
+            const ratio = parseFloat(document.getElementById('water-temp-ratio').value) || 2.0;
+
+            const liters = feedKg * ratio;
+            const gallons = liters / 3.78541;
+
+            document.getElementById('water-res-liter').innerText = liters.toLocaleString('ms-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' LITER';
+            document.getElementById('water-res-gallon').innerText = gallons.toLocaleString('ms-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' GALLON';
+        }
+
+        function calculateCapacity() {
+            const length = parseFloat(document.getElementById('cap-length').value) || 0;
+            const width = parseFloat(document.getElementById('cap-width').value) || 0;
+            const sqftPerBird = parseFloat(document.getElementById('cap-type').value) || 2.0;
+
+            const area = length * width;
+            const baseFemaleCap = Math.floor(area / sqftPerBird);
+            
+            // Mortality & sexing error +4%
+            const totalFemale = Math.round(baseFemaleCap * 1.04);
+            // Male 13%
+            const totalMale = Math.round(totalFemale * 0.13);
+
+            document.getElementById('cap-res-area').innerText = area.toLocaleString('ms-MY') + ' FT²';
+            document.getElementById('cap-res-female').innerText = totalFemale.toLocaleString('ms-MY') + ' Ekor';
+            document.getElementById('cap-res-male').innerText = totalMale.toLocaleString('ms-MY') + ' Ekor';
+        }
+
+        function calculateFumigation() {
+            const l = parseFloat(document.getElementById('fum-l').value) || 0;
+            const w = parseFloat(document.getElementById('fum-w').value) || 0;
+            const h = parseFloat(document.getElementById('fum-h').value) || 0;
+            const mult = parseInt(document.getElementById('fum-strength').value) || 3;
+
+            const volume = l * w * h;
+
+            // Per 100 cu ft base rates
+            const potBase = 20 * mult; // 20g, 40g, 60g
+            const formBase = 40 * mult; // 40ml, 80ml, 120ml
+
+            const totalPotassium = (volume * potBase) / 100;
+            const totalFormalin = (volume * formBase) / 100;
+
+            document.getElementById('fum-res-vol').innerText = volume.toFixed(1) + ' Kaki Padu';
+            document.getElementById('fum-res-potassium').innerText = totalPotassium.toFixed(2) + ' Gram';
+            document.getElementById('fum-res-formalin').innerText = totalFormalin.toFixed(2) + ' ML';
+        }
+
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            if (!container) return;
+
+            container.innerHTML = '';
+            userChecklist.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = `p-3 rounded-xl border flex items-center justify-between transition ${item.done ? 'bg-emerald-50/60 border-emerald-200 text-slate-500 line-through' : 'bg-slate-50 border-slate-200 text-slate-800'}`;
+                div.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklist(${idx})" class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="text-xs sm:text-sm font-medium">${item.text}</span>
+                    </div>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded ${item.done ? 'bg-emerald-200 text-emerald-800' : 'bg-slate-200 text-slate-700'}">${item.cat}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleChecklist(index) {
+            userChecklist[index].done = !userChecklist[index].done;
+            localStorage.setItem('breeder_checklist', JSON.stringify(userChecklist));
+            renderChecklist();
+        }
+
+        function resetChecklist() {
+            userChecklist = defaultChecklist.map(i => ({ ...i, done: false }));
+            localStorage.setItem('breeder_checklist', JSON.stringify(userChecklist));
+            renderChecklist();
+        }
+
+        window.onload = function() {
+            renderVaccineTable(vaccineData);
+            renderChecklist();
+            calculateFeed();
+            calculateWater();
+            calculateCapacity();
+            calculateFumigation();
+        };
+    </script>
+</body>
+</html>
