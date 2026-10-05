@@ -1520,6 +1520,14 @@
             calculateCapacity();
             calculateFumigation();
         };
+    </script><script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+            .then(() => console.log("Service Worker aktif"))
+            .catch((error) => console.error("Service Worker gagal:", error));
+    });
+}
     </script>
 </body>
 </html>
