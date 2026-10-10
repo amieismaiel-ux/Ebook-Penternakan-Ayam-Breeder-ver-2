@@ -163,26 +163,35 @@ font-size: 14px;
 }
 
     
+
 /* GAMBAR AYAM SAMAR PADA BANNER */
-#content-bab1 > div:first-child {
+#content-bab1 .bg-gradient-to-r {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
 }
 
-#content-bab1 > div:first-child::after {
+#content-bab1 .bg-gradient-to-r::after {
   content: "";
   position: absolute;
-  right: -20px;
+  z-index: 0;
+  right: -10px;
   bottom: -25px;
-  width: 220px;
-  height: 180px;
-  background-image: url('chick-logo.png');
+  width: 200px;
+  height: 200px;
+  background-image: url("./chick-logo.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  opacity: 0.12;
+  opacity: 0.13;
   pointer-events: none;
 }
+
+#content-bab1 .bg-gradient-to-r > div {
+  position: relative;
+  z-index: 1;
+}
+
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
