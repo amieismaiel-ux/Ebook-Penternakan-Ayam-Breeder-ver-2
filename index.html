@@ -50,35 +50,8 @@
             }
         }
     </script>
-    /* BREEDER PRO - GAMBAR AYAM SAMAR PADA BANNER */
-#content-bab1 > div:first-of-type {
-position: relative;
-isolation: isolate;
-overflow: hidden;
-background-image:
-linear-gradient(
-90deg,
-rgba(2, 76, 54, 0.98) 0%,
-rgba(2, 76, 54, 0.90) 45%,
-rgba(2, 76, 54, 0.55) 100%
-),
-url("chick-logo.png");
-background-repeat: no-repeat;
-background-position: center, right center;
-background-size: cover, auto 100%;
-}
+    
 
-#content-bab1 > div:first-of-type > div {
-position: relative;
-z-index: 2;
-}
-
-@media (max-width: 640px) {
-#content-bab1 > div:first-of-type {
-background-position: center, right bottom;
-background-size: cover, auto 78%;
-}
-}
     <style>
         body { font-family: 'Inter', sans-serif; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -189,7 +162,28 @@ min-width: 0;
 font-size: 14px;
 }
 
-    </style>
+    
+/* GAMBAR AYAM SAMAR PADA BANNER */
+#content-bab1 > div:first-child {
+  position: relative;
+  overflow: hidden;
+}
+
+#content-bab1 > div:first-child::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: -25px;
+  width: 220px;
+  height: 180px;
+  background-image: url('chick-logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.12;
+  pointer-events: none;
+}
+</style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
