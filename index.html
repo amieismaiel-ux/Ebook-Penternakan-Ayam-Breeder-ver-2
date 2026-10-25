@@ -1,28 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="ms" class="scroll-smooth">
-<head><link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#075c47">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Ebook Ayam">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192-1.png">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Book Interaktif: Penternakan Ayam Baka (Breeder)</title><meta property="og:title" content="Ebook Penternakan Ayam Breeder">
-<meta property="og:description" content="Panduan lengkap penternakan ayam breeder dalam bentuk ebook interaktif.">
-<meta property="og:image" content="https://ebookver2.amieismaiel.com/thumbnail.jpg">
-<meta property="og:url" content="https://ebookver2.amieismaiel.com/">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ebook Penternakan Ayam Breeder">
-<meta name="twitter:description" content="Panduan lengkap penternakan ayam breeder dalam bentuk ebook interaktif.">
-<meta name="twitter:image" content="https://ebookver2.amieismaiel.com/thumbnail.jpg">
+    <title>E-Book Interaktif: Penternakan Ayam Baka (Breeder)</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#075c47">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Ebook Ayam">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192-1.png">
+    <link rel="apple-touch-icon" href="icon-192-1.png">
+
+    <meta property="og:title" content="Ebook Penternakan Ayam Breeder">
+    <meta property="og:description" content="Panduan lengkap penternakan ayam breeder dalam bentuk ebook interaktif.">
+    <meta property="og:image" content="https://ebookver2.amieismaiel.com/thumbnail.jpg">
+    <meta property="og:url" content="https://ebookver2.amieismaiel.com/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ebook Penternakan Ayam Breeder">
+    <meta name="twitter:description" content="Panduan lengkap penternakan ayam breeder dalam bentuk ebook interaktif.">
+    <meta name="twitter:image" content="https://ebookver2.amieismaiel.com/thumbnail.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -50,152 +55,97 @@
             }
         }
     </script>
-    
 
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        /* ===== BREEDER PRO - PREMIUM GLOSSY DASHBOARD ===== */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 45%, #fffbeb 100%);
+        }
+
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         .active-tab { background-color: #166534; color: #ffffff; border-left: 4px solid #f59e0b; }
-        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .gradient-header { background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%); }
-        /* BREEDER PRO — PREMIUM GLOSSY DASHBOARD */
-body {
-background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 45%, #ecfdf5 100%);
-}
 
-.gradient-header {
-background: linear-gradient(135deg, #064e3b 0%, #047857 48%, #065f46 100%);
-box-shadow: 0 8px 30px rgba(6, 78, 59, 0.22);
-}
-
-.glass-card {
-background: rgba(255, 255, 255, 0.88);
-backdrop-filter: blur(18px);
--webkit-backdrop-filter: blur(18px);
-border: 1px solid rgba(255, 255, 255, 0.8);
-box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
-}
-
-.tab-content > div:not(.hidden) {
-transition: all 0.3s ease;
-}
-
-.bg-white {
-box-shadow: 0 8px 28px rgba(15, 23, 42, 0.045);
-}
-
-button {
-transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:active {
-transform: scale(0.98);
-}
-
-img {
-max-width: 100%;
-height: auto;
-}
-
-@media (max-width: 640px) {
-body {
-font-size: 14px;
-}
-
-main {
-    min-width: 0;
-}
-
-.gradient-header h1 {
-    font-size: 14px;
-}
-
+        .gradient-header {
+            background: linear-gradient(135deg, #064e3b 0%, #047857 55%, #15803d 100%);
+            box-shadow: 0 8px 30px rgba(6, 78, 59, 0.22);
         }
-        /* BREEDER PRO - PREMIUM GLOSSY DASHBOARD */
 
-body {
-background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 45%, #fffbeb 100%);
-}
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 22px;
+            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+        }
 
-.gradient-header {
-background: linear-gradient(135deg, #064e3b 0%, #047857 55%, #15803d 100%);
-box-shadow: 0 8px 30px rgba(6, 78, 59, 0.22);
-}
+        .tab-content > div:not(.hidden) {
+            transition: all 0.3s ease;
+        }
 
-.glass-card {
-background: rgba(255, 255, 255, 0.92);
-backdrop-filter: blur(18px);
--webkit-backdrop-filter: blur(18px);
-border: 1px solid rgba(255, 255, 255, 0.85);
-border-radius: 22px;
-box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
-}
+        .bg-white {
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.055);
+            border-radius: 20px;
+        }
 
-.bg-white {
-box-shadow: 0 8px 28px rgba(15, 23, 42, 0.055);
-border-radius: 20px;
-}
+        button {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
 
-button {
-transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+        button:active {
+            transform: scale(0.98);
+        }
 
-button:active {
-transform: scale(0.98);
-}
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-img {
-max-width: 100%;
-}
+        @media (max-width: 640px) {
+            body {
+                font-size: 14px;
+            }
 
-@media (max-width: 640px) {
-body {
-font-size: 14px;
-}
+            main {
+                min-width: 0;
+            }
 
-main {
-min-width: 0;
-}
+            .gradient-header h1 {
+                font-size: 14px;
+            }
+        }
 
-.gradient-header h1 {
-font-size: 14px;
-}
+        /* GAMBAR AYAM SAMAR PADA BANNER BAB 1 */
+        #content-bab1 .bg-gradient-to-r {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+        }
 
-    
+        #content-bab1 .bg-gradient-to-r::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            right: -25px;
+            bottom: -20px;
+            width: 175px;
+            height: 175px;
+            background-image: url("./chick-logo.png");
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: contain;
+            opacity: 0.10;
+            pointer-events: none;
+        }
 
-
-/* GAMBAR AYAM SAMAR PADA BANNER */
-#content-bab1 .bg-gradient-to-r {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
-
-#content-bab1 .bg-gradient-to-r::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  right: -25px;
-  bottom: -20px;
-  width: 175px;
-  height: 175px;
-  background-image: url("./chick-logo.png");
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  background-size: contain;
-  opacity: 0.10;
-  pointer-events: none;
-}
-
-#content-bab1 .bg-gradient-to-r > div {
-  position: relative;
-  z-index: 1;
-}
-
-
-
-</style>
+        #content-bab1 .bg-gradient-to-r > div {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
@@ -209,15 +159,13 @@ font-size: 14px;
                         <i class="fa-solid fa-bars text-xl"></i>
                     </button>
                     <!-- Logo Realistik BREEDER PRO -->
-<div class="w-12 h-12 rounded-full overflow-hidden
-            border-2 border-amber-400 shadow-lg
-            bg-amber-100 shrink-0">
-    <img
-        src="chick-logo.png"
-        alt="Logo anak ayam BREEDER PRO"
-        class="w-full h-full object-cover"
-    >
-</div>
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-400 shadow-lg bg-amber-100 shrink-0">
+                        <img
+                            src="chick-logo.png"
+                            alt="Logo anak ayam BREEDER PRO"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
                     <div>
                         <h1 class="text-lg font-bold tracking-tight leading-none text-white">Manual Penternakan Ayam Baka</h1>
                         <p class="text-xs text-emerald-200 mt-0.5 hidden sm:block">Panduan Interaktif Lengkap: DOC hingga Pre-Lay</p>
@@ -253,10 +201,10 @@ font-size: 14px;
                 <span class="font-bold text-base"><i class="fa-solid fa-book-open mr-2"></i> Menu Bab E-Book</span>
                 <button id="close-sidebar" class="text-white hover:text-amber-400"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
-            
+
             <div class="sticky top-20 bg-white border border-slate-200 rounded-2xl p-3 shadow-sm flex flex-col gap-1 max-h-[calc(100vh-6rem)] overflow-y-auto">
                 <div class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Modul E-Book</div>
-                
+
                 <button onclick="showTab('bab1')" id="nav-bab1" class="active-tab w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm transition flex items-center justify-between group">
                     <span class="flex items-center gap-2.5">
                         <i class="fa-solid fa-warehouse text-amber-500 group-hover:scale-110 transition"></i>
@@ -334,7 +282,7 @@ font-size: 14px;
 
         <!-- Content Area -->
         <main class="flex-1 min-w-0">
-            
+
             <!-- BAB 1: PERSEDIAAN REBAN & BROODING -->
             <section id="content-bab1" class="tab-content space-y-6">
                 <!-- Chapter Banner -->
@@ -467,7 +415,7 @@ font-size: 14px;
                                 <tr class="hover:bg-slate-50">
                                     <td class="py-2.5 px-3 text-center font-bold text-slate-400">16</td>
                                     <td class="py-2.5 px-4">Baiki & semak tabir (Curtain system)</td>
-                                    <td class="py-2.5 px-4 text-slate-500">Kesesakan udarah & penebat</td>
+                                    <td class="py-2.5 px-4 text-slate-500">Pengudaraan & penebat</td>
                                     <td class="py-2.5 px-4 text-center font-semibold text-emerald-700">2 Hari</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50">
@@ -545,18 +493,18 @@ font-size: 14px;
                         </div>
 
                         <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900">
-                            <strong>Contoh Pengiraan Berek/Bilik:</strong><br>
+                            <strong>Contoh Pengiraan Reban/Bilik:</strong><br>
                             245cm x 350cm x 240cm &rarr; (8.0 kaki x 11.5 kaki x 7.9 kaki = <strong>726.8 Kaki Padu</strong>)<br>
                             <em>Triple Strength Required:</em><br>
-                            &bull; Potassium: (726.8 x 60)/100 = <strong>436.0 gram</strong><br>
-                            &bull; Formalin: (726.8 x 120)/100 = <strong>872.0 ml</strong>
+                            &bull; Potassium: (726.8 x 60)/100 = <strong>436.08 gram</strong><br>
+                            &bull; Formalin: (726.8 x 120)/100 = <strong>872.16 ml</strong>
                         </div>
                     </div>
 
                     <!-- Section C: Pengiraan Kapasiti Reban Ayam Baka -->
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                         <h3 class="font-bold text-slate-800 flex items-center gap-2">
-                            <i class="fa-solid fa-[#000] fa-calculator text-amber-500"></i>
+                            <i class="fa-solid fa-calculator text-amber-500"></i>
                             Kapasiti & Densiti Reban Ayam Baka
                         </h3>
                         <p class="text-xs text-slate-600">
@@ -594,7 +542,10 @@ font-size: 14px;
                             <div>&bull; <strong>Mortality & Sexing Error Allowance:</strong> +4%</div>
                             <div>&bull; <strong>Male Ratio (Ayam Jantan):</strong> 13% daripada jumlah Betina</div>
                             <div class="text-[11px] text-amber-800 pt-1">
-                                <em>Contoh: Reban 333' x 45' = 14,985 FT² &divide; 2 = 7,492 (7,500 ekor) + 4% = <strong>7,800 Ekor Betina</strong>. Male (13%) = <strong>1,014 Ekor Jantan</strong>.</em>
+                                <em>Contoh: Reban 333' x 45' = 14,985 FT² &divide; 2 = 7,492 (&asymp; 7,500 ekor) + 4% &asymp; <strong>7,800 Ekor Betina</strong>. Male (13%) &asymp; <strong>1,014 Ekor Jantan</strong>.</em>
+                            </div>
+                            <div class="text-[11px] text-amber-800">
+                                <em>Nota: Contoh di atas dibundarkan. Kalkulator Kapasiti memberi angka tepat (7,792 betina &amp; 1,013 jantan untuk saiz yang sama).</em>
                             </div>
                         </div>
                     </div>
@@ -767,7 +718,7 @@ font-size: 14px;
                         <i class="fa-solid fa-gears text-emerald-600"></i>
                         Transisi Peralatan Feeder & Pemilihan Ayam (Grading)
                     </h3>
-                    
+
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
                         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
                             <div class="text-xs font-bold text-amber-600 uppercase">HARI KE-26</div>
@@ -960,7 +911,7 @@ font-size: 14px;
                 </div>
             </section>
 
-            <!-- BAB 4: VAKSINASI & DEWORMINC -->
+            <!-- BAB 4: VAKSINASI & DEWORMING -->
             <section id="content-bab4" class="tab-content space-y-6 hidden">
                 <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-6 sm:p-8 rounded-2xl shadow-md relative overflow-hidden">
                     <div class="relative z-10 space-y-2">
@@ -1016,7 +967,7 @@ font-size: 14px;
                             </h3>
                             <p class="text-xs text-slate-500">Senarai vaksin mengikut susunan umur (Hari 9 &rarr; Hari 483)</p>
                         </div>
-                        
+
                         <!-- Search Box -->
                         <div class="relative w-full sm:w-64">
                             <input type="text" id="vac-search" onkeyup="filterVaccineTable()" placeholder="Cari vaksin / penyakit..." class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -1069,7 +1020,7 @@ font-size: 14px;
 
                         <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 space-y-1">
                             <div class="font-bold">Sasaran Piawaian (Target Benchmark):</div>
-                            <div>&bull; <strong>&gt; 85% Uniformity:</strong> Sangat Cemerlang (Cemerlang)</div>
+                            <div>&bull; <strong>&gt; 85% Uniformity:</strong> Sangat Cemerlang</div>
                             <div>&bull; <strong>80% - 84% Uniformity:</strong> Sederhana (Perlu Pengasingan)</div>
                             <div>&bull; <strong>&lt; 80% Uniformity:</strong> Lemah (Perlu Makanan Khas)</div>
                         </div>
@@ -1100,7 +1051,7 @@ font-size: 14px;
                             </li>
                             <li class="flex items-start gap-2">
                                 <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
-                                <span><strong>Anus/Vent Lembap & Melebar:</strong> Anus menjadi lebih elastik, basah dan bujan oval.</span>
+                                <span><strong>Anus/Vent Lembap & Melebar:</strong> Anus menjadi lebih elastik, basah dan bujur oval.</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
@@ -1278,11 +1229,11 @@ font-size: 14px;
                         </div>
                         <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
                             <div class="text-xs text-emerald-800 font-bold uppercase">Kapasiti Betina (+4% Mort)</div>
-                            <div class="text-xl font-extrabold text-emerald-900" id="cap-res-female">7,800 Ekor</div>
+                            <div class="text-xl font-extrabold text-emerald-900" id="cap-res-female">7,792 Ekor</div>
                         </div>
                         <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl">
                             <div class="text-xs text-amber-800 font-bold uppercase">Kapasiti Jantan (13% Male)</div>
-                            <div class="text-xl font-extrabold text-amber-900" id="cap-res-male">1,014 Ekor</div>
+                            <div class="text-xl font-extrabold text-amber-900" id="cap-res-male">1,013 Ekor</div>
                         </div>
                     </div>
                 </div>
@@ -1378,49 +1329,57 @@ font-size: 14px;
     </footer>
 
     <script>
-        // Master Data for Vaccine Schedule
+        // ---------- Storan selamat (elak ralat jika localStorage disekat) ----------
+        function storageGet(key) {
+            try { return localStorage.getItem(key); } catch (e) { return null; }
+        }
+        function storageSet(key, value) {
+            try { localStorage.setItem(key, value); } catch (e) { /* abaikan */ }
+        }
+
+        // Master Data for Vaccine Schedule (nilai minggu dikira automatik daripada hari)
         const vaccineData = [
-            { day: 9, week: "1.2", vac: "Reo (L)", brand: "VA ChickVac @ Zeotis", route: "Subcutaneous" },
-            { day: 9, week: "1.2", vac: "AMPV (L) SHS", brand: "Hipraviar SHS @ Hipra", route: "Eye Drop" },
-            { day: 13, week: "1.6", vac: "ND+IB (K)", brand: "Nobilis ND+IB Killed @ MSD", route: "Subcutaneous" },
-            { day: 18, week: "2.4", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Eye Drop" },
-            { day: 18, week: "2.4", vac: "IB Variant (L)", brand: "IB VAR 4/91 @ MSD", route: "Eye Drop" },
-            { day: 18, week: "2.4", vac: "Pox (L)", brand: "Fowl Pox @ MVP", route: "Wing Web" },
-            { day: 19, week: "2.5", vac: "Flushing: Tilmicosin + Apramycin sulfate", brand: "Flushing Rawatan Air", route: "Drinking Water" },
-            { day: 28, week: "4.0", vac: "MG (L)", brand: "MG- F-vax MG @ MSD", route: "Eye Drop" },
-            { day: 35, week: "5.0", vac: "E.Coli (L)", brand: "Poulvac E. Coli @ Zeotis", route: "Drinking Water" },
-            { day: 42, week: "6.0", vac: "IBH-8b Auto (K)", brand: "IBH-8b @ Anicon/BI", route: "Subcutaneous" },
-            { day: 42, week: "6.0", vac: "NDS (L)", brand: "MyVAC NDS @ MVP (0.5ml)", route: "Intramuscular" },
-            { day: 49, week: "7.0", vac: "Reo (L)", brand: "Reo- V.A Chick @ Zeotis", route: "Subcutaneous" },
-            { day: 56, week: "8.0", vac: "ILT (L)", brand: "LT IVAX / SP @ MSD", route: "Eye Drop" },
-            { day: 63, week: "9.0", vac: "LPAI H9N2 Auto (K)", brand: "ANIVAC H9N2 @ Taseen (0.5ml)", route: "Intramuscular" },
-            { day: 70, week: "10.0", vac: "ND+IB (K)", brand: "Vaksimune ND L-IBplus @ Vaksin", route: "Intramuscular" },
-            { day: 77, week: "11.0", vac: "Reovirus (K)", brand: "TRI Reo / Zeotis", route: "Intramuscular" },
-            { day: 84, week: "12.0", vac: "AMPV (L) SHS", brand: "AMPV (L) Hipraviar SHS", route: "Eye Drop" },
-            { day: 91, week: "13.0", vac: "AE + POX (L)", brand: "Nobilis AE+POX", route: "Wing Web" },
-            { day: 91, week: "13.0", vac: "CIAV (L)", brand: "Nobilis CAV P4", route: "Wing Web" },
-            { day: 105, week: "15.0", vac: "AMPV (K) SHS", brand: "TRT / Hipra", route: "Intramuscular" },
-            { day: 112, week: "16.0", vac: "ND+IB+EDS+Coryza (K)", brand: "ND+IB+EDS+Coryza (4 in 1 - BI)", route: "Intramuscular" },
-            { day: 119, week: "17.0", vac: "E.Coli (L)", brand: "Poulvac E. Coli @ Zeotis", route: "Drinking Water" },
-            { day: 126, week: "18.0", vac: "IBH-8b Auto (K)", brand: "IBH-8b @ Anicon/BI", route: "Intramuscular" },
-            { day: 126, week: "18.0", vac: "NDS (L)", brand: "MyVAC NDS @ MVP (0.5ml)", route: "Intramuscular" },
-            { day: 133, week: "19.0", vac: "MG (K)", brand: "MG - MG-Bac (Killed) @ Elanco", route: "Intramuscular" },
-            { day: 140, week: "20.0", vac: "LPAI H9N2 Auto (K)", brand: "ANIVAC H9N2 @ Taseen (0.5ml)", route: "Intramuscular" },
-            { day: 147, week: "21.0", vac: "ND+IB+IBD+Reo (K)", brand: "Nobilis ND+IB+IBD+Reo @ MSD", route: "Intramuscular" },
-            { day: 147, week: "21.0", vac: "Coryza (K)", brand: "CORYZA OIL", route: "Intramuscular" },
-            { day: 175, week: "25.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
-            { day: 203, week: "29.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
-            { day: 231, week: "33.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
-            { day: 259, week: "37.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
-            { day: 287, week: "41.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
-            { day: 315, week: "45.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
-            { day: 343, week: "49.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
-            { day: 371, week: "53.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
-            { day: 399, week: "57.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
-            { day: 427, week: "61.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
-            { day: 455, week: "65.0", vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zeotis@3'", route: "Drinking Water" },
-            { day: 483, week: "69.0", vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" }
-        ];
+            { day: 9, vac: "Reo (L)", brand: "VA ChickVac @ Zoetis", route: "Subcutaneous" },
+            { day: 9, vac: "AMPV (L) SHS", brand: "Hipraviar SHS @ Hipra", route: "Eye Drop" },
+            { day: 13, vac: "ND+IB (K)", brand: "Nobilis ND+IB Killed @ MSD", route: "Subcutaneous" },
+            { day: 18, vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zoetis@3'", route: "Eye Drop" },
+            { day: 18, vac: "IB Variant (L)", brand: "IB VAR 4/91 @ MSD", route: "Eye Drop" },
+            { day: 18, vac: "Pox (L)", brand: "Fowl Pox @ MVP", route: "Wing Web" },
+            { day: 19, vac: "Flushing: Tilmicosin + Apramycin sulfate", brand: "Flushing Rawatan Air", route: "Drinking Water" },
+            { day: 28, vac: "MG (L)", brand: "MG- F-vax MG @ MSD", route: "Eye Drop" },
+            { day: 35, vac: "E.Coli (L)", brand: "Poulvac E. Coli @ Zoetis", route: "Drinking Water" },
+            { day: 42, vac: "IBH-8b Auto (K)", brand: "IBH-8b @ Anicon/BI", route: "Subcutaneous" },
+            { day: 42, vac: "NDS (L)", brand: "MyVAC NDS @ MVP (0.5ml)", route: "Intramuscular" },
+            { day: 49, vac: "Reo (L)", brand: "Reo- V.A Chick @ Zoetis", route: "Subcutaneous" },
+            { day: 56, vac: "ILT (L)", brand: "LT IVAX / SP @ MSD", route: "Eye Drop" },
+            { day: 63, vac: "LPAI H9N2 Auto (K)", brand: "ANIVAC H9N2 @ Taseen (0.5ml)", route: "Intramuscular" },
+            { day: 70, vac: "ND+IB (K)", brand: "Vaksimune ND L-IBplus @ Vaksin", route: "Intramuscular" },
+            { day: 77, vac: "Reovirus (K)", brand: "TRI Reo / Zoetis", route: "Intramuscular" },
+            { day: 84, vac: "AMPV (L) SHS", brand: "AMPV (L) Hipraviar SHS", route: "Eye Drop" },
+            { day: 91, vac: "AE + POX (L)", brand: "Nobilis AE+POX", route: "Wing Web" },
+            { day: 91, vac: "CIAV (L)", brand: "Nobilis CAV P4", route: "Wing Web" },
+            { day: 105, vac: "AMPV (K) SHS", brand: "TRT / Hipra", route: "Intramuscular" },
+            { day: 112, vac: "ND+IB+EDS+Coryza (K)", brand: "ND+IB+EDS+Coryza (4 in 1 - BI)", route: "Intramuscular" },
+            { day: 119, vac: "E.Coli (L)", brand: "Poulvac E. Coli @ Zoetis", route: "Drinking Water" },
+            { day: 126, vac: "IBH-8b Auto (K)", brand: "IBH-8b @ Anicon/BI", route: "Intramuscular" },
+            { day: 126, vac: "NDS (L)", brand: "MyVAC NDS @ MVP (0.5ml)", route: "Intramuscular" },
+            { day: 133, vac: "MG (K)", brand: "MG - MG-Bac (Killed) @ Elanco", route: "Intramuscular" },
+            { day: 140, vac: "LPAI H9N2 Auto (K)", brand: "ANIVAC H9N2 @ Taseen (0.5ml)", route: "Intramuscular" },
+            { day: 147, vac: "ND+IB+IBD+Reo (K)", brand: "Nobilis ND+IB+IBD+Reo @ MSD", route: "Intramuscular" },
+            { day: 147, vac: "Coryza (K)", brand: "CORYZA OIL", route: "Intramuscular" },
+            { day: 175, vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zoetis@3'", route: "Drinking Water" },
+            { day: 203, vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 231, vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zoetis@3'", route: "Drinking Water" },
+            { day: 259, vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 287, vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zoetis@3'", route: "Drinking Water" },
+            { day: 315, vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 343, vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zoetis@3'", route: "Drinking Water" },
+            { day: 371, vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 399, vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zoetis@3'", route: "Drinking Water" },
+            { day: 427, vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" },
+            { day: 455, vac: "ND+IB (L)", brand: "ND (Lasota)+IB (Mass)/Zoetis@3'", route: "Drinking Water" },
+            { day: 483, vac: "ND+IB (L)", brand: "Ma5 + Clone30 / MSD", route: "Drinking Water" }
+        ].map(item => ({ ...item, week: (item.day / 7).toFixed(1) }));
 
         // Master Data for Interactive Checklist
         const defaultChecklist = [
@@ -1431,248 +1390,4 @@ font-size: 14px;
             { id: 5, text: "100% Pilih/Grading saiz ayam pada Hari ke-26", cat: "Minggu 4" },
             { id: 6, text: "Pasang chain feeder (Hari 27) & mula operasi (Hari 29 / W5)", cat: "Minggu 4-5" },
             { id: 7, text: "Sedia & larutkan ubat cacing Flubendazole 5% mengikut jadual", cat: "Kesihatan" },
-            { id: 8, text: "Semak tabir & kelajuan kipas pengudaraan reban", cat: "Harian" }
-        ];
-
-        let userChecklist = JSON.parse(localStorage.getItem('breeder_checklist')) || defaultChecklist.map(item => ({ ...item, done: false }));
-
-        function showTab(tabId) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            
-            // Remove active style from all nav buttons
-            document.querySelectorAll('#sidebar button').forEach(btn => {
-                btn.classList.remove('active-tab');
-                btn.classList.add('text-slate-600');
-            });
-
-            // Show target content
-            const targetContent = document.getElementById('content-' + tabId);
-            if (targetContent) targetContent.classList.remove('hidden');
-
-            // Highlight nav button
-            const activeNav = document.getElementById('nav-' + tabId);
-            if (activeNav) {
-                activeNav.classList.add('active-tab');
-                activeNav.classList.remove('text-slate-600');
-            }
-
-            // Close mobile menu if open
-            closeMobileMenu();
-
-            // Update Progress Percentage UI
-            updateProgress(tabId);
-
-            // Scroll top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function scrollToSection(sectionId) {
-            showTab('kalkulator');
-            setTimeout(() => {
-                const el = document.getElementById(sectionId);
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
-
-        function updateProgress(tabId) {
-            const tabs = ['bab1', 'bab2', 'bab3', 'bab4', 'bab5', 'kalkulator', 'checklist'];
-            const idx = tabs.indexOf(tabId) + 1;
-            const pct = Math.round((idx / tabs.length) * 100);
-            
-            document.getElementById('progress-bar').style.width = pct + '%';
-            document.getElementById('reading-progress-text').innerText = `Progress: ${pct}% Selesai`;
-        }
-
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-        const closeSidebarBtn = document.getElementById('close-sidebar');
-
-        function openMobileMenu() {
-            sidebar.classList.remove('-translate-x-full');
-            overlay.classList.remove('hidden');
-        }
-
-        function closeMobileMenu() {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        }
-
-        if (mobileBtn) mobileBtn.addEventListener('click', openMobileMenu);
-        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeMobileMenu);
-        if (overlay) overlay.addEventListener('click', closeMobileMenu);
-
-        function renderVaccineTable(data) {
-            const tbody = document.getElementById('vac-tbody');
-            if (!tbody) return;
-
-            tbody.innerHTML = '';
-            data.forEach(item => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
-                tr.innerHTML = `
-                    <td class="py-2.5 px-3 font-bold text-slate-900">Hari ${item.day}</td>
-                    <td class="py-2.5 px-3 text-emerald-800 font-semibold">${item.week} W</td>
-                    <td class="py-2.5 px-4 font-bold text-slate-800">${item.vac}</td>
-                    <td class="py-2.5 px-4 text-slate-600">${item.brand}</td>
-                    <td class="py-2.5 px-3">
-                        <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px] border border-slate-200">
-                            ${item.route}
-                        </span>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function filterVaccineTable() {
-            const query = document.getElementById('vac-search').value.toLowerCase();
-            const filtered = vaccineData.filter(i => 
-                i.vac.toLowerCase().includes(query) || 
-                i.brand.toLowerCase().includes(query) || 
-                i.route.toLowerCase().includes(query) ||
-                i.day.toString().includes(query) ||
-                i.week.includes(query)
-            );
-            renderVaccineTable(filtered);
-        }
-
-        function calculateFeed() {
-            const birdCount = parseFloat(document.getElementById('feed-bird-count').value) || 0;
-            const gramPerBird = parseFloat(document.getElementById('feed-gram-per-bird').value) || 0;
-            const daysOnFeed = parseFloat(document.getElementById('feed-program-select').value) || 7;
-
-            if (birdCount <= 0 || gramPerBird <= 0) {
-                alert("Sila masukkan jumlah ayam dan feed gram yang sah!");
-                return;
-            }
-
-            // Formula: (Jumlah Ayam * Gram per ekor * 7 hari) / Jumlah Hari Makan
-            const weeklyTotalGram = birdCount * gramPerBird * 7;
-            const weeklyTotalKg = weeklyTotalGram / 1000;
-            const weeklyTotalBags = weeklyTotalKg / 50;
-
-            const feedPerFeedingDayKg = weeklyTotalKg / daysOnFeed;
-            const feedPerFeedingDayBags = feedPerFeedingDayKg / 50;
-
-            const gramPerBirdOnFeedingDay = (gramPerBird * 7) / daysOnFeed;
-
-            // UI Display
-            document.getElementById('feed-res-weekly').innerText = weeklyTotalKg.toLocaleString('ms-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' KG';
-            document.getElementById('feed-res-weekly-bags').innerText = weeklyTotalBags.toFixed(2) + ' Beg (50kg)';
-
-            document.getElementById('feed-res-perday').innerText = feedPerFeedingDayKg.toLocaleString('ms-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' KG';
-            document.getElementById('feed-res-perday-bags').innerText = feedPerFeedingDayBags.toFixed(2) + ' Beg (50kg)';
-
-            document.getElementById('feed-res-gramperday').innerText = gramPerBirdOnFeedingDay.toFixed(2) + ' Gram';
-
-            const programText = {
-                7: "Setiap Hari Makan (7/0)",
-                6: "6 Hari Makan / 1 Hari Puasa (6/1)",
-                5: "5 Hari Makan / 2 Hari Puasa (5/2)",
-                4: "4 Hari Makan / 3 Hari Puasa (4/3)"
-            }[daysOnFeed];
-
-            document.getElementById('feed-res-summary-note').innerText = `Program ${programText}`;
-        }
-
-        function calculateWater() {
-            const feedKg = parseFloat(document.getElementById('water-feed-kg').value) || 0;
-            const ratio = parseFloat(document.getElementById('water-temp-ratio').value) || 2.0;
-
-            const liters = feedKg * ratio;
-            const gallons = liters / 3.78541;
-
-            document.getElementById('water-res-liter').innerText = liters.toLocaleString('ms-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' LITER';
-            document.getElementById('water-res-gallon').innerText = gallons.toLocaleString('ms-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' GALLON';
-        }
-
-        function calculateCapacity() {
-            const length = parseFloat(document.getElementById('cap-length').value) || 0;
-            const width = parseFloat(document.getElementById('cap-width').value) || 0;
-            const sqftPerBird = parseFloat(document.getElementById('cap-type').value) || 2.0;
-
-            const area = length * width;
-            const baseFemaleCap = Math.floor(area / sqftPerBird);
-            
-            // Mortality & sexing error +4%
-            const totalFemale = Math.round(baseFemaleCap * 1.04);
-            // Male 13%
-            const totalMale = Math.round(totalFemale * 0.13);
-
-            document.getElementById('cap-res-area').innerText = area.toLocaleString('ms-MY') + ' FT²';
-            document.getElementById('cap-res-female').innerText = totalFemale.toLocaleString('ms-MY') + ' Ekor';
-            document.getElementById('cap-res-male').innerText = totalMale.toLocaleString('ms-MY') + ' Ekor';
-        }
-
-        function calculateFumigation() {
-            const l = parseFloat(document.getElementById('fum-l').value) || 0;
-            const w = parseFloat(document.getElementById('fum-w').value) || 0;
-            const h = parseFloat(document.getElementById('fum-h').value) || 0;
-            const mult = parseInt(document.getElementById('fum-strength').value) || 3;
-
-            const volume = l * w * h;
-
-            // Per 100 cu ft base rates
-            const potBase = 20 * mult; // 20g, 40g, 60g
-            const formBase = 40 * mult; // 40ml, 80ml, 120ml
-
-            const totalPotassium = (volume * potBase) / 100;
-            const totalFormalin = (volume * formBase) / 100;
-
-            document.getElementById('fum-res-vol').innerText = volume.toFixed(1) + ' Kaki Padu';
-            document.getElementById('fum-res-potassium').innerText = totalPotassium.toFixed(2) + ' Gram';
-            document.getElementById('fum-res-formalin').innerText = totalFormalin.toFixed(2) + ' ML';
-        }
-
-        function renderChecklist() {
-            const container = document.getElementById('checklist-container');
-            if (!container) return;
-
-            container.innerHTML = '';
-            userChecklist.forEach((item, idx) => {
-                const div = document.createElement('div');
-                div.className = `p-3 rounded-xl border flex items-center justify-between transition ${item.done ? 'bg-emerald-50/60 border-emerald-200 text-slate-500 line-through' : 'bg-slate-50 border-slate-200 text-slate-800'}`;
-                div.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklist(${idx})" class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
-                        <span class="text-xs sm:text-sm font-medium">${item.text}</span>
-                    </div>
-                    <span class="text-[10px] font-bold px-2 py-0.5 rounded ${item.done ? 'bg-emerald-200 text-emerald-800' : 'bg-slate-200 text-slate-700'}">${item.cat}</span>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        function toggleChecklist(index) {
-            userChecklist[index].done = !userChecklist[index].done;
-            localStorage.setItem('breeder_checklist', JSON.stringify(userChecklist));
-            renderChecklist();
-        }
-
-        function resetChecklist() {
-            userChecklist = defaultChecklist.map(i => ({ ...i, done: false }));
-            localStorage.setItem('breeder_checklist', JSON.stringify(userChecklist));
-            renderChecklist();
-        }
-
-        window.onload = function() {
-            renderVaccineTable(vaccineData);
-            renderChecklist();
-            calculateFeed();
-            calculateWater();
-            calculateCapacity();
-            calculateFumigation();
-        };
-    </script><script>
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js")
-            .then(() => console.log("Service Worker aktif"))
-            .catch((error) => console.error("Service Worker gagal:", error));
-    });
-}
-    </script>
-</body>
-</html>
+ 
